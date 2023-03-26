@@ -3,6 +3,7 @@ import { useState, forwardRef } from 'react';
 import { Files } from '../../redux/fetchFiles/reducer';
 import { Dropbox } from 'dropbox';
 import moment from 'moment';
+import FileSaver from 'file-saver';
 import { API_KEY } from '../../const/api';
 import { useAppDispatch } from '../../redux/hook';
 import { generateIcon } from '../helpers/generateIcon';
@@ -83,9 +84,16 @@ const ShowContent = ({ file }: FilesProps) => {
 
   function downloadFile(path: string) {
     handleCloseMoreMenu();
+    if(file['.tag']==='folder'){
+      dbx.filesDownloadZip({ path: path }).then((response: any) => {
+        FileSaver.saveAs(response.fileBlob, `${file.name}.zip`)
+      }) 
+    }else{
     dbx.filesGetTemporaryLink({ path: path }).then((response: any) => {
       window.open(response.link, '_blank')
-    })
+    }) 
+    }
+
   }
 
   async function deleteFile(path: string) {
