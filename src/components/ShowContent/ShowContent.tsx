@@ -86,6 +86,7 @@ const ShowContent = ({ file }: FilesProps) => {
   }
 
   const handleClickOpen = () => {
+    setAnchorElMore(null);
     setOpen(true);
   };
   const handleClose = () => {
