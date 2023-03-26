@@ -28,6 +28,7 @@ const ButtonModul = () => {
   const [anchorElOrganise, setAnchorElOrganise] = useState<null | HTMLElement>(null);
   const [anchorElMore, setAnchorElMore] = useState<null | HTMLElement>(null);
   const [open, setOpen] = useState(false);
+  const [openAlert, setOpenAlert] = useState(false);
   const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
     ref,
@@ -35,7 +36,8 @@ const ButtonModul = () => {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-  const [openAlert, setOpenAlert] = useState(false);
+  /////////////////////work with UI components
+
   const handleClickAlert = () => {
     setOpenAlert(true);
   };
@@ -43,7 +45,6 @@ const ButtonModul = () => {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpenAlert(false);
   };
 
@@ -78,24 +79,6 @@ const ButtonModul = () => {
   const handleCloseMoreMenu = () => {
     setAnchorElMore(null);
   };
-
-
-
-  async function handleSubmit(e: any) {
-    if (folderName === '') {
-      handleClickError();
-    } else {
-      handleClose();
-      await dispatch(createFolder(folderName, path))
-      dispatch(updateFiles());
-    }
-  }
-
-  async function createFiles(files: any) {
-    await dispatch(handleFileUpload(files, path));
-    dispatch(updateFiles());
-  }
-
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -149,6 +132,25 @@ const ButtonModul = () => {
       },
     },
   });
+  /////////////////////functional
+
+  async function handleSubmit(e: any) {
+    if (folderName === '') {
+      handleClickError();
+    } else {
+      handleClose();
+      await dispatch(createFolder(folderName, path))
+      dispatch(updateFiles());
+    }
+  }
+
+  async function createFiles(files: any) {
+    await dispatch(handleFileUpload(files, path));
+    dispatch(updateFiles());
+  }
+
+
+
 
   return (
     <>

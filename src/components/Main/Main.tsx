@@ -36,7 +36,7 @@ const Main = () => {
 
 
   return (
-    <Paper style={{  minHeight: 600, width: '900px', marginTop: '1rem', marginBottom: '1rem' }}>
+    <Paper style={{ minHeight: 600, width: '900px', marginTop: '1rem', marginBottom: '1rem' }}>
       <div className={styles.url}>
         {url.map((el) => (
           <p onClick={e => handleDelPath(el.path)} key={el.path}>{el.name.toUpperCase()} /</p>

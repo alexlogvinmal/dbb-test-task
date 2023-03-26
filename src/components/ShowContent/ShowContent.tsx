@@ -33,9 +33,11 @@ interface FilesProps {
 }
 
 const ShowContent = ({ file }: FilesProps) => {
+
   const dispatch = useAppDispatch();
   const [anchorElMore, setAnchorElMore] = useState<null | HTMLElement>(null);
   const [renameNew, setRenameNew] = useState('');
+  const [openAlert, setOpenAlert] = useState(false);
   const [open, setOpen] = useState(false);
   const dbx = new Dropbox({
     accessToken: API_KEY,
@@ -48,7 +50,8 @@ const ShowContent = ({ file }: FilesProps) => {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-  const [openAlert, setOpenAlert] = useState(false);
+  /////////////////////work with UI components
+
   const handleClickAlert = () => {
     setOpenAlert(true);
   };
@@ -70,46 +73,6 @@ const ShowContent = ({ file }: FilesProps) => {
     setOpenError(false);
   };
 
-
-  function handleAddPath(path: string, name: string, tag: string) {
-    if (tag === 'folder') {
-      dispatch(setPath(path));
-      dispatch(addPathUrl(path, name));
-    } else {
-      dbx.filesGetPreview({ path: path }).then((response: any) => {
-        window.open(response.link, '_blank')
-      })
-    }
-  }
-
-  function downloadFile(path: string) {
-    handleCloseMoreMenu();
-    if(file['.tag']==='folder'){
-      dbx.filesDownloadZip({ path: path }).then((response: any) => {
-        FileSaver.saveAs(response.fileBlob, `${file.name}.zip`)
-      }) 
-    }else{
-    dbx.filesGetTemporaryLink({ path: path }).then((response: any) => {
-      window.open(response.link, '_blank')
-    }) 
-    }
-
-  }
-
-  async function deleteFile(path: string) {
-    handleCloseMoreMenu();
-    await dbx.filesDeleteV2({ path: path })
-    dispatch(updateFiles());
-  }
-
-  function setTime(time: string) {
-    if (time) {
-      return moment(time).format('D/M/YYYY H:mm')
-    } else {
-      return '--'
-    }
-  }
-
   const handleOpenMoreMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElMore(event.currentTarget);
   };
@@ -122,18 +85,6 @@ const ShowContent = ({ file }: FilesProps) => {
     handleClickAlert();
   }
 
-  async function handleSubmit(e: any) {
-    if (renameNew === '') {
-      handleClickError();
-    } else {
-      handleClose();
-      await dbx.filesMoveV2({
-        from_path: file.path_lower,
-        to_path: `/${renameNew}`
-      })
-      dispatch(updateFiles());
-    }
-  }
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -160,6 +111,63 @@ const ShowContent = ({ file }: FilesProps) => {
       },
     },
   });
+
+  /////////////////////functional
+
+  function handleAddPath(path: string, name: string, tag: string) {
+    if (tag === 'folder') {
+      dispatch(setPath(path));
+      dispatch(addPathUrl(path, name));
+    } else {
+      dbx.filesGetPreview({ path: path }).then((response: any) => {
+        window.open(response.link, '_blank')
+      })
+    }
+  }
+
+  function downloadFile(path: string) {
+    handleCloseMoreMenu();
+    if (file['.tag'] === 'folder') {
+      dbx.filesDownloadZip({ path: path }).then((response: any) => {
+        FileSaver.saveAs(response.fileBlob, `${file.name}.zip`)
+      })
+    } else {
+      dbx.filesGetTemporaryLink({ path: path }).then((response: any) => {
+        window.open(response.link, '_blank')
+      })
+    }
+
+  }
+
+  async function deleteFile(path: string) {
+    handleCloseMoreMenu();
+    await dbx.filesDeleteV2({ path: path })
+    dispatch(updateFiles());
+  }
+
+  function setTime(time: string) {
+    if (time) {
+      return moment(time).format('D/M/YYYY H:mm')
+    } else {
+      return '--'
+    }
+  }
+
+  async function handleSubmit(e: any) {
+    if (renameNew === '') {
+      handleClickError();
+    } else {
+      handleClose();
+      await dbx.filesMoveV2({
+        from_path: file.path_lower,
+        to_path: `/${renameNew}`
+      })
+      dispatch(updateFiles());
+    }
+  }
+
+
+
 
   return (
     <>
