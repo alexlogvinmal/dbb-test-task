@@ -43,9 +43,6 @@ Application design is made using Material UI
 -- ButtonModul.module.scss
 -- ButtonModul.tsx //// component where the buttons 'Create', 'Upload', 'Organise', 'More' are collected
 
-- helpers
--- generateIcon.tsx //// export FolderIcon and FileIcon 
-
 - Icons
 -- Icons.tsx //// export svg icons
 
@@ -59,6 +56,9 @@ Application design is made using Material UI
 
 **const**
 -- api.ts //// ACCESS TOKEN
+
+**helpers**
+-- generateIcon.tsx //// export FolderIcon and FileIcon 
 
 **redux**
 -- hook.ts //// useAppDispatch, useAppSelector
