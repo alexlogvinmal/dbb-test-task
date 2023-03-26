@@ -16,7 +16,7 @@ You will also see any lint errors in the console.
 
 ## About
 
-Create with **API Dropbox**
+Create with **Dropbox API**
 
 #### Working functions
 
