@@ -167,8 +167,6 @@ const ShowContent = ({ file }: FilesProps) => {
   }
 
 
-
-
   return (
     <>
       <TableRow className={styles.content} key={file.name}>
