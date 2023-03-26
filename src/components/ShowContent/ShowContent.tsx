@@ -119,8 +119,11 @@ const ShowContent = ({ file }: FilesProps) => {
       dispatch(setPath(path));
       dispatch(addPathUrl(path, name));
     } else {
-      dbx.filesGetPreview({ path: path }).then((response: any) => {
-        window.open(response.link, '_blank')
+      dbx.filesGetMetadata({ path: path }).then((response: any) => {/////// Ссылка не открывает, а скачивает файл
+        dbx.filesGetTemporaryLink({ path: response.path_display }).then((res:any) =>{
+        // window.open(res.link, '_blank') 
+        console.log(`${res.link}?dl=0`)
+        })
       })
     }
   }
