@@ -46,31 +46,31 @@ You will also see any lint errors in the console.
 
 - createFolder
 -- action.ts
--- reducer.ts
+-- reducer.ts //// folder creation functionality
 
 - fetchFiles
 -- action.ts
--- reducer.ts
+-- reducer.ts //// download files from request
 
 - pathUrl
 -- action.ts
--- reducer.ts
+-- reducer.ts //// creating link for every folder 
 
 - setPath
 -- action.ts
--- reducer.ts
+-- reducer.ts //// update path state
 
 - updateFiles
 -- action.ts
--- reducer.ts
+-- reducer.ts //// update state
 
 - uploadFile
 -- action.ts
--- reducer.ts
+-- reducer.ts ////  upload files functionality
 
 -- App.tsx
 
--- declare.d.ts
+-- declare.d.ts //// declare .module.scss
 
 -- index.tsx
 
