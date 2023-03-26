@@ -40,8 +40,8 @@ Application design is made using Material UI
 **components**
 
 - ButtonModul
---> ButtonModul.module.scss
---> ButtonModul.tsx //// component where the buttons 'Create', 'Upload', 'Organise', 'More' are collected
+-- ButtonModul.module.scss
+-- ButtonModul.tsx //// component where the buttons 'Create', 'Upload', 'Organise', 'More' are collected
 
 - helpers
 -- generateIcon.tsx //// export FolderIcon and FileIcon 
