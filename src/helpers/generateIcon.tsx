@@ -1,6 +1,6 @@
 import {
     FloderIcon, FileIcon
-  } from "../Icons/Icons"
+  } from "../components/Icons/Icons"
 
   export function generateIcon(code: string | undefined) {
     switch (code) {

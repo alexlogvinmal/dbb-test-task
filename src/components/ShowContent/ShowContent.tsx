@@ -6,7 +6,7 @@ import moment from 'moment';
 import FileSaver from 'file-saver';
 import { API_KEY } from '../../const/api';
 import { useAppDispatch } from '../../redux/hook';
-import { generateIcon } from '../helpers/generateIcon';
+import { generateIcon } from '../../helpers/generateIcon';
 import { addPathUrl } from '../../redux/pathUrl/action';
 import { setPath } from '../../redux/setPath/action';
 import { updateFiles } from '../../redux/updateFiles/action';
