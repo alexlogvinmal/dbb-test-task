@@ -16,7 +16,7 @@ You will also see any lint errors in the console.
 
 ## About
 
-Использует **API Dropbox**
+Create with **API Dropbox**
 
 #### Working functions
 
