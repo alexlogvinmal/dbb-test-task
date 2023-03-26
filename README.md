@@ -21,28 +21,28 @@ You will also see any lint errors in the console.
 
 - ButtonModul
 -- ButtonModul.module.scss
--- ButtonModul.tsx
+-- ButtonModul.tsx //// component where the buttons 'Create', 'Upload', 'Organise', 'More' are collected
 
 - helpers
--- generateIcon.tsx
+-- generateIcon.tsx //// export FolderIcon and FileIcon 
 
 - Icons
--- Icons.tsx
+-- Icons.tsx //// export svg icons
 
 - Main
 -- Main.module.scss
--- Main.tsx
+-- Main.tsx //// the main module where all application components are collected
 
 - ShowContent
 -- ShowContent.module.scss
--- ShowContent.tsx
+-- ShowContent.tsx //// the component displays each file as a table element, there is also a functionality
 
 **const**
--- api.ts
+-- api.ts //// ACCESS TOKEN
 
 **redux**
--- hook.ts
--- store.ts
+-- hook.ts //// useAppDispatch, useAppSelector
+-- store.ts //// create store
 
 - createFolder
 -- action.ts
