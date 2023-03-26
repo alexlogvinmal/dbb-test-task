@@ -14,7 +14,24 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-## After you download repository please connect all dependencies
+## About
+
+Использует **API Dropbox**
+
+#### Working functions
+
+**Top buttons**
+- Upload
+- Create -> Folder
+- More -> Rewind this folder
+
+**Files**
+- Download
+- Rename
+- Delete
+
+
+Application design is made using Material UI
 
 
 ## **Navigation**
