@@ -1,1 +1,1 @@
-export const API_KEY = 'sl.BbWQAYKkvKThHfwvKr5i1b_KeLBfEXPa9wMvLMI5aAGjcnwteC0GliAyF-izYwJd_o90zXHv6G6U-A3S0qhUo_QgqSvJvRimzCZ2ijRPUeEBINouA1yZGkIrtPGqeysyVXg98CI'
+export const API_KEY = 'sl.BbXKKEZaxQotaJtji8bS5I-X9lfWzGIXfRx_2-GgHK92jlPU2kODMsjUjnYzBYbnfYZ98jw0MzMMy1_SplNNEuhwUlyZyajLQgdEinzURY2aOB79Qy8QW7phbu9Vek983MUAttQ'
