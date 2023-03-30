@@ -7,9 +7,9 @@ import FileSaver from 'file-saver';
 import { API_KEY } from '../../const/api';
 import { useAppDispatch } from '../../redux/hook';
 import { generateIcon } from '../../helpers/generateIcon';
-import { addPathUrl } from '../../redux/pathUrl/action';
-import { setPath } from '../../redux/setPath/action';
-import { updateFiles } from '../../redux/updateFiles/action';
+import { addPathUrl } from '../../redux/pathUrl/reducer';
+import { setPath } from '../../redux/setPath/reducer';
+import { updateFiles } from '../../redux/updateFiles/reducer';
 import { DialogContentText, TableCell, TableRow } from '@mui/material';
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
@@ -118,7 +118,8 @@ const ShowContent = ({ file }: FilesProps) => {
   function handleAddPath(path: string, name: string, tag: string) {
     if (tag === 'folder') {
       dispatch(setPath(path));
-      dispatch(addPathUrl(path, name));
+      let newurl ={name: name, path:path}
+      dispatch(addPathUrl(newurl));
     } else {
       dbx.filesGetMetadata({ path: path }).then((response: any) => {/////// Ссылка не открывает, а скачивает файл
         dbx.filesGetTemporaryLink({ path: response.path_display }).then((res:any) =>{

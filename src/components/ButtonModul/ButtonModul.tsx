@@ -3,7 +3,7 @@ import { useState, forwardRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { handleFileUpload } from '../../redux/uploadFile/action';
 import { createFolder } from '../../redux/createFolder/action';
-import { updateFiles } from '../../redux/updateFiles/action';
+import { updateFiles } from '../../redux/updateFiles/reducer';
 import { UploadIcon, PlusIcon, AngelDownIcon, MoreIcon, MultiFolderIcon, CogIcon, Folder2Icon, SharedFolderIcon, ScreenRecordIcon, SetNameIcon, ShowIcon, RequestFileIcon, RewindIcon } from '../Icons/Icons';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';

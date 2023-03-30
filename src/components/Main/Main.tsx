@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { fetchFiles } from '../../redux/fetchFiles/action';
 import { FilesState } from '../../redux/fetchFiles/reducer';
-import { delPathUrl } from '../../redux/pathUrl/action';
-import { setPath } from '../../redux/setPath/action';
+import { delPathUrl } from '../../redux/pathUrl/reducer';
+import { setPath } from '../../redux/setPath/reducer';
 import ButtonModul from '../ButtonModul/ButtonModul';
 import ShowContent from '../ShowContent/ShowContent';
 import TableCell from '@mui/material/TableCell';
@@ -19,7 +19,7 @@ const Main = () => {
   const update = useAppSelector(state => state.updateFilesReducer.update);
   const filesState: FilesState = useAppSelector(state => state.fetchReducer);
   const files = filesState.files;
-  const url = useAppSelector(state => state.pathUrlReducer)
+  const url = useAppSelector(state => state.pathUrlReducer.url)
   const path = useAppSelector(state => state.setPathReducer.path);
   const dispatch = useAppDispatch();
 
