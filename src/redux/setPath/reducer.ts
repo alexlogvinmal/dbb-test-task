@@ -1,3 +1,6 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+
 interface RootState {
   path: string;
 }
@@ -5,15 +8,16 @@ interface RootState {
 const initialState: RootState = {
   path: '',
 };
-  
-  export const setPathReducer = (state = initialState, action: any) => {
-    switch (action.type) {
-        case 'SET_PATH':
-          return {
-            ...state,
-            path: action.payload,
-          };
-        default:
-          return state;
-      }
-  };
+
+export const setPathSlice = createSlice({
+  name: 'path',
+  initialState,
+  reducers: {
+    setPath: (state, action) => {
+      state.path = action.payload;
+    }
+  }
+})
+
+export const { setPath } = setPathSlice.actions
+export const setPathReducer = setPathSlice.reducer

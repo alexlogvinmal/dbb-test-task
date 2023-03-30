@@ -1,17 +1,19 @@
+import { createSlice } from "@reduxjs/toolkit";
+
 
 
 const initialState = {
   update: false,
 };
 
-export const updateFilesReducer = (state = initialState, action: any) => {
-    switch (action.type) {
-        case 'SET_UPDATE':
-          return {
-            ...state,
-            update: !state.update,
-          };
-        default:
-          return state;
-      }
-  };
+  export const updateFilesSlice = createSlice({
+    name:'update',
+    initialState,
+    reducers:{
+      updateFiles: (state) =>{state.update = !state.update}
+    }
+  })
+
+  export const {updateFiles} = updateFilesSlice.actions;
+  export const updateFilesReducer = updateFilesSlice.reducer;
+

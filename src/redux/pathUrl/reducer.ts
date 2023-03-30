@@ -1,22 +1,29 @@
-const initialState = [
+import { createSlice } from "@reduxjs/toolkit";
+
+
+const initialState = {
+  url: [
     { name: 'Main', path: '' },
-  ];
-  
-  export const pathUrlReducer = (state = initialState, action: { type: string; path: string; name: string; length:number}) => {
-    switch (action.type) {
-      case 'ADD_PATHURL':
-        return [
-          ...state,
-          {
-            name: action.name,
-            path: action.path,
-          },
-        ];
-        case 'DEL_PATHURL':
-        return state.filter(item => item.path.length <= action.length);
-      default:
-        return state;
+  ]
+}
+
+export const pathUrlSlice = createSlice({
+  name: 'url',
+  initialState,
+  reducers: {
+    addPathUrl: (state, action) => {
+
+      state.url.push(action.payload)
+    },
+    delPathUrl: (state, action) => {
+      state.url = state.url.filter(item => item.path.length <= action.payload);
     }
-  };
+  }
+})
+
+export const { addPathUrl, delPathUrl } = pathUrlSlice.actions
+export const pathUrlReducer = pathUrlSlice.reducer
+
+
 
 
